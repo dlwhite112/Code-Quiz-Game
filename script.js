@@ -1,16 +1,41 @@
 var startGame = document.getElementById("startButton");
+var rules = document.getElementById("rules")
+var header = document.getElementById("header")
 var timerElement = document.getElementById("timer");
+var answerArea = document.getElementById('multipleChoiceArea');
 var timer;
 var questionIndex = 0;
 var timerCount;
 var questionKey = [
   {
-    question: "Whats 2 + 3",
+    question: "1Whats 2 + 3",
     answer: "5",
     options: ["4", "5", "6", "7"],
   },
-];
 
+  {
+    question: "2Whats 2 + 3",
+    answer: "5",
+    options: ["5", "5", "6", "7"],
+  },
+
+  {
+    question: "3Whats 2 + 3",
+    answer: "5",
+    options: ["6", "5", "6", "7"],
+  },
+  {
+    question: "4Whats 2 + 3",
+    answer: "5",
+    options: ["6", "5", "6", "7"],
+  },
+  {
+    question: "5Whats 2 + 3",
+    answer: "5",
+    options: ["8", "5", "6", "7"],
+  },
+];
+console.log(rules)
 function startTimer() {
   timer = setInterval(function () {
     timerCount--;
@@ -28,15 +53,17 @@ function startTimer() {
 // START THE GAME
 function start() {
   startGame.style.visibility = "hidden";
-
+  rules.textContent = ""
+  header.textContent = ""
   console.log("start it then");
   timerCount = 80;
   startTimer();
   questions();
+  
 }
 // POPULATE QUESTIONS [ CURRENT QUESTION W/ OPTIONS , LOAD NEXT QUESTION UNTIL NO MORE QUESTIONS || NO MORE TIME]
 function questions() {
-    var answerArea = document.getElementById('multipleChoiceArea');
+    
   var thisQuestion = questionKey[questionIndex];
   var multipleChoice = questionKey[questionIndex].options;
   // this will have more options after all question arrays made
@@ -79,7 +106,17 @@ function answers(answer, selection) {
     }
     else{
         console.log("wrong")
+        // time penalty for incorrect answers
+        timerCount -=10
     }
+    questionIndex++
+      if (questionIndex === 5){
+         timer == 0
+          return;
+      } 
+          questionArea.textContent=""
+          answerArea.textContent=""
+
     questions()
 }
 
