@@ -1,8 +1,12 @@
 var startGame = document.getElementById("startButton");
-var rules = document.getElementById("rules")
-var header = document.getElementById("header")
+var rules = document.getElementById("rules");
+var header = document.getElementById("header");
 var timerElement = document.getElementById("timer");
-var answerArea = document.getElementById('multipleChoiceArea');
+var answerArea = document.getElementById("multipleChoiceArea");
+var saveScore = document.createElement("button");
+var enterScore = document.createElement("input");
+var yourName = document.createElement("p");
+var scoreBoard = document.getElementById("scoreboard");
 var timer;
 var questionIndex = 0;
 var timerCount;
@@ -35,7 +39,7 @@ var questionKey = [
     options: ["8", "5", "6", "7"],
   },
 ];
-console.log(rules)
+console.log(rules);
 function startTimer() {
   timer = setInterval(function () {
     timerCount--;
@@ -53,17 +57,15 @@ function startTimer() {
 // START THE GAME
 function start() {
   startGame.style.visibility = "hidden";
-  rules.textContent = ""
-  header.textContent = ""
+  rules.textContent = "";
+  header.textContent = "";
   console.log("start it then");
-  timerCount = 80;
+  timerCount = 60;
   startTimer();
   questions();
-  
 }
 // POPULATE QUESTIONS [ CURRENT QUESTION W/ OPTIONS , LOAD NEXT QUESTION UNTIL NO MORE QUESTIONS || NO MORE TIME]
 function questions() {
-    
   var thisQuestion = questionKey[questionIndex];
   var multipleChoice = questionKey[questionIndex].options;
   // this will have more options after all question arrays made
@@ -82,18 +84,17 @@ function questions() {
     var buttons = document.createElement("button");
     const choices = multipleChoice[i];
     buttons.textContent = choices;
-    buttons.addEventListener('click', function() {
-        var selection = this.textContent
-        // will have more answers after all questions made
-        console.log(questionKey[questionIndex].answer)
+    buttons.addEventListener("click", function () {
+      var selection = this.textContent;
+      // will have more answers after all questions made
+      console.log(questionKey[questionIndex].answer);
 
-        answers(questionKey[questionIndex].answer, selection)
-    })
+      answers(questionKey[questionIndex].answer, selection);
+    });
 
     answerArea.appendChild(buttons);
   }
 
-  
   // multipleChoiceArea = document.createElement('button')
   // multipleChoiceArea.textContent = multipleChoice
 
@@ -101,25 +102,36 @@ function questions() {
 }
 
 function answers(answer, selection) {
-    if (answer === selection){
-        console.log("correct")
-    }
-    else{
-        console.log("wrong")
-        // time penalty for incorrect answers
-        timerCount -=10
-    }
-    questionIndex++
-      if (questionIndex === 5){
-         timer == 0
-          return;
-      } 
-          questionArea.textContent=""
-          answerArea.textContent=""
+  if (answer === selection) {
+    console.log("correct");
+  } else {
+    console.log("wrong");
+    // time penalty for incorrect answers
+    timerCount -= 20;
+  }
+  questionIndex++;
+  if (questionIndex === 5) {
+    timer == 0;
+    scores()
+    return;
+  }
+  questionArea.textContent = "";
+  answerArea.textContent = "";
 
-    questions()
+  questions();
 }
+// function endGame() {
+//   console.log('thats all folks')
+// }
+function scores() {
+  console.log("thats all folks");
+  yourName.textContent = "enter your initials and secure your legacy";
+  saveScore.setAttribute("type", "submit");
+  saveScore.textContent = "save";
 
-function scores() {}
+  scoreBoard.append(yourName);
+  scoreBoard.append(saveScore);
+  scoreBoard.append(enterScore);
+}
 
 startGame.addEventListener("click", start);
