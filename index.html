@@ -13,14 +13,21 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-md">
-          <a class="navbar-brand">High Scores!</a>
+          <a class="navbar-brand" id="score-log">High Scores!</a>
         </div>
         <div id=timer class="timeClock">time</div>
       </nav>
 
       <div class="container">
+        <div class="row">
+            <div class="col-lg-4" id="totals">
+                <h3 class="row ms-3" id="swish"></h3>
+                <h3 class="row ms-3" id="miss"></h3>
+            </div>
+        </div>
           <div class="row">
               <div id="scoreboard"></div>
+              <ul id="scores"></ul>
               <h1 id="header">Welcome to the Code Quiz Game</h1>
               <div id="questionArea"></div>
           </div>

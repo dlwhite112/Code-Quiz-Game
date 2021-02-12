@@ -7,6 +7,10 @@ var saveScore = document.createElement("button");
 var enterScore = document.createElement("input");
 var yourName = document.createElement("p");
 var scoreBoard = document.getElementById("scoreboard");
+var right = document.getElementById("swish")
+var wrong = document.getElementById("miss")
+var bricks = 0
+var buckets = 0
 var timer;
 var questionIndex = 0;
 var timerCount;
@@ -44,7 +48,7 @@ function startTimer() {
   timer = setInterval(function () {
     timerCount--;
     timerElement.textContent = timerCount;
-    if (timerCount >= 0) {
+    if (timerCount <= 0) {
     }
 
     // if timer hits 0 = end & enter initials
@@ -57,8 +61,8 @@ function startTimer() {
 // START THE GAME
 function start() {
   startGame.style.visibility = "hidden";
-  rules.textContent = "";
-  header.textContent = "";
+  hideRules()
+  
   console.log("start it then");
   timerCount = 60;
   startTimer();
@@ -104,19 +108,22 @@ function questions() {
 function answers(answer, selection) {
   if (answer === selection) {
     console.log("correct");
+    buckets++
   } else {
     console.log("wrong");
+    bricks++
     // time penalty for incorrect answers
     timerCount -= 20;
   }
+  right.textContent = "made: " + buckets;
+  wrong.textContent = "missed: " + bricks;
   questionIndex++;
   if (questionIndex === 5) {
     timer == 0;
     scores()
     return;
   }
-  questionArea.textContent = "";
-  answerArea.textContent = "";
+  hideQNA()
 
   questions();
 }
@@ -125,6 +132,8 @@ function answers(answer, selection) {
 // }
 function scores() {
   console.log("thats all folks");
+  // hide q&a
+  hideQNA()
   yourName.textContent = "enter your initials and secure your legacy";
   saveScore.setAttribute("type", "submit");
   saveScore.textContent = "save";
@@ -133,5 +142,51 @@ function scores() {
   scoreBoard.append(saveScore);
   scoreBoard.append(enterScore);
 }
+saveScore.addEventListener("click", function () {
+  highScore()
+})
+
+function hideQNA(){
+  questionArea.textContent = ""
+  answerArea.textContent = ""
+  // timerElement.textContent = "" 
+}
+function hideRules(){
+  rules.textContent = "";
+  header.textContent = "";
+}
+function highScore(){
+  var scores = JSON.parse(localStorage.getItem("Scores")) || [];
+  var loggedScore = {
+    name: enterScore.value,
+    score: buckets,
+  };
+  scores.push(loggedScore);
+  localStorage.setItem("scores", JSON.stringify(loggedScore));
+  console.log(scores)
+}
+var scoreLog = document.querySelector("#score-log")
+
+scoreLog.addEventListener("click", function (event) {
+  event.preventDefault();
+    highScoreList.style.visibility = "visible"
+    renderScore()
+})
+
+var nameList = [10];
+var highScoreList = document.querySelector("#scores");
+function renderScore() {
+    var scores = JSON.parse(localStorage.getItem("scores"));
+    var highScoreList = document.querySelector("#scores");
+    var renderedScore = scores.name + " , " + scores.score;
+    for (var i = 0; i < nameList.length; i++) {
+        var li = document.createElement("li");
+        li.textContent = renderedScore;
+        li.setAttribute("data-index", i);
+        highScoreList.appendChild(li);
+    }
+
+};
+
 
 startGame.addEventListener("click", start);
