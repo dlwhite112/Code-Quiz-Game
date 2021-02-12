@@ -1,4 +1,7 @@
 var startGame = document.getElementById("startButton");
+var playAgain = document.createElement("h3")
+  playAgain.textContent = "Play Again?"
+var totals = document.getElementById("totals")
 var rules = document.getElementById("rules");
 var header = document.getElementById("header");
 var timerElement = document.getElementById("timer");
@@ -59,8 +62,16 @@ function startTimer() {
   }, 1000);
 }
 // START THE GAME
+startGame.addEventListener("click", start);
 function start() {
+  saveScore.style.visibility = "hidden"
   startGame.style.visibility = "hidden";
+  highScoreList.style.visibility = "hidden";
+  enterScore.style.visibility = "hidden"
+  yourName.style.visibility = "hidden"
+  bricks = 0
+  buckets = 0
+  questionIndex = 0
   hideRules()
   
   console.log("start it then");
@@ -134,13 +145,17 @@ function scores() {
   console.log("thats all folks");
   // hide q&a
   hideQNA()
-  yourName.textContent = "enter your initials and secure your legacy";
+  yourName.textContent = "enter your name and secure your legacy";
   saveScore.setAttribute("type", "submit");
   saveScore.textContent = "save";
 
   scoreBoard.append(yourName);
   scoreBoard.append(saveScore);
   scoreBoard.append(enterScore);
+  yourName.style.visibility = "visible"
+  saveScore.style.visibility = "visible"
+  startGame.style.visibility = "visible";
+  enterScore.style.visibility = "visible"
 }
 saveScore.addEventListener("click", function () {
   highScore()
@@ -170,18 +185,18 @@ var scoreLog = document.querySelector("#score-log")
 scoreLog.addEventListener("click", function (event) {
   event.preventDefault();
     highScoreList.style.visibility = "visible"
-    renderScore()
+    finalScore()
 })
 
-var nameList = [10];
+var nameList = [5];
 var highScoreList = document.querySelector("#scores");
-function renderScore() {
+function finalScore() {
     var scores = JSON.parse(localStorage.getItem("scores"));
     var highScoreList = document.querySelector("#scores");
-    var renderedScore = scores.name + " , " + scores.score;
+    var boxScore = scores.name + " , " + scores.score;
     for (var i = 0; i < nameList.length; i++) {
         var li = document.createElement("li");
-        li.textContent = renderedScore;
+        li.textContent = boxScore;
         li.setAttribute("data-index", i);
         highScoreList.appendChild(li);
     }
@@ -189,4 +204,4 @@ function renderScore() {
 };
 
 
-startGame.addEventListener("click", start);
+
