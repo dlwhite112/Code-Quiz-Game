@@ -110,10 +110,6 @@ function questions() {
     answerArea.appendChild(buttons);
   }
 
-  // multipleChoiceArea = document.createElement('button')
-  // multipleChoiceArea.textContent = multipleChoice
-
-  // answerArea.appendChild(multipleChoiceArea)
 }
 
 function answers(answer, selection) {
@@ -156,6 +152,9 @@ function scores() {
   saveScore.style.visibility = "visible"
   startGame.style.visibility = "visible";
   enterScore.style.visibility = "visible"
+  
+  clearInterval(timer)
+  timerElement.textContent = "GAME OVER"
 }
 saveScore.addEventListener("click", function () {
   highScore()
@@ -202,6 +201,10 @@ function finalScore() {
     }
 
 };
+// function restartClock(){
+  
+//   timerElement.textContent = "GAME OVER"
+//   }
 
 
 
