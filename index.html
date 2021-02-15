@@ -1,50 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Bootstrap Link -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Code Quiz Shootout Game</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-md">
-          <a class="navbar-brand" id="score-log">High Scores!</a>
-        </div>
-        <div id=timer class="timeClock">SHOTCLOCK</div>
-      </nav>
-
-      <div class="container">
-        <div class="row">
-            <div class="col-lg-4" id="totals">
-                <h3 class="row ms-3" id="swish"></h3>
-                <h3 class="row ms-3" id="miss"></h3>
-            </div>
-        </div>
-          <div class="row">
-              <div id="scoreboard"></div>
-              <ul id="scores"></ul>
-              <h1 id="header">Code Quiz Shootout Game!</h1>
-              <div id="questionArea"></div>
-          </div>
-          <div class="row">
-              
-              <div id="multipleChoiceArea" class="col-lg-12"></div>
-
-              <p id="rules">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi distinctio a laudantium voluptatem nesciunt modi quibusdam provident rem dolore nulla?</p>
-          </div>
-          <div class="row">
-            <div class="d-grid gap-2 col-6 mx-auto">
-                <button class="btn btn-primary" id="startButton" type="button">START</button>
-            </div>
-          </div>
-          
+      <div class="container-md">
+        <a class="navbar-brand" id="score-log">High Scores!</a>
       </div>
-      <script src="./script.js"></script>
-</body>
+      <div id="timer" class="timeClock">SHOTCLOCK</div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4" id="totals">
+          <h3 class="row ms-3" id="swish"></h3>
+          <h3 class="row ms-3" id="miss"></h3>
+        </div>
+      </div>
+      <div class="row">
+        <div id="scoreboard"></div>
+        <ul id="scores"></ul>
+        <h1 id="header">Code Quiz Shootout Game!</h1>
+        <div id="questionArea"></div>
+      </div>
+      <div class="row">
+        <div id="multipleChoiceArea" class="col-lg-12"></div>
+
+        <p id="rules">
+          Use your coding expertise to outshoot the competition! Do your best,
+          and remember missed shots <strong>will</strong> cost you
+          <em>TIME!</em>
+        </p>
+      </div>
+      <div class="row">
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button class="btn btn-primary" id="startButton" type="button">
+            START
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
 </html>

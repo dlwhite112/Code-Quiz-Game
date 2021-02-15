@@ -1,51 +1,49 @@
-*{
-    font-family: 'Russo One', sans-serif;
+* {
+  font-family: "Russo One", sans-serif;
 }
-nav{
-    padding: 3rem;
+nav {
+  padding: 3rem;
 }
 body {
-    background-image: url("./Assets/basketball-background.jpg");
-    opacity: 0.95;
-    background-size: cover;
+  background-image: url("./Assets/basketball-background.jpg");
+  opacity: 0.95;
+  background-size: cover;
 }
-.timeClock{
-    color: red;
-    border: solid 5px black;
-    margin: 7px;
-    padding: 10px;
-    font-size: 30px;
-    border-radius: 10px;
-
+.timeClock {
+  color: red;
+  border: solid 5px black;
+  margin: 7px;
+  padding: 10px;
+  font-size: 30px;
+  border-radius: 10px;
 }
-#score-log{
-    color: coral;
-    border: solid 5px black;
-    margin: 7px;
-    padding: 10px;
-    font-size: 30px;
-    border-radius: 10px;
+#score-log {
+  color: coral;
+  border: solid 5px black;
+  margin: 7px;
+  padding: 10px;
+  font-size: 30px;
+  border-radius: 10px;
 }
-.container{
-    margin-top: 3rem;
-    padding: 3rem;
-    color: whitesmoke;
-    background-color: black;
-    border-radius: 15px;
+.container {
+  margin-top: 3rem;
+  padding: 3rem;
+  color: whitesmoke;
+  background-color: black;
+  border-radius: 15px;
 }
-
 
 #multipleChoiceArea button {
-    margin: 5px;
-    border-radius: 7px;
-    background-color: #4CAF50; /* Green background */
-    border: 1px solid green; /* Green border */
-    color: white; /* White text */
-    padding: 10px 24px; /* Some padding */
-    cursor: pointer; /* Pointer/hand icon */
-    width: 50%; /* Set a width if needed */
-    display: block; /* Make the buttons appear below each other */
-  }
-  #multipleChoiceArea button:hover {
-    background-color: #3e8e41;
-  }
+  margin: 5px;
+  border-radius: 7px;
+  background-color: #4caf50; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  width: 50%; /* Set a width if needed */
+  display: block; /* Make the buttons appear below each other */
+}
+#multipleChoiceArea button:hover {
+  background-color: #3e8e41;
+}

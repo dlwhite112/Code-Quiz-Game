@@ -1,7 +1,7 @@
 var startGame = document.getElementById("startButton");
-var playAgain = document.createElement("h3")
-  playAgain.textContent = "Play Again?"
-var totals = document.getElementById("totals")
+var playAgain = document.createElement("h3");
+playAgain.textContent = "Play Again?";
+var totals = document.getElementById("totals");
 var rules = document.getElementById("rules");
 var header = document.getElementById("header");
 var timerElement = document.getElementById("timer");
@@ -10,40 +10,42 @@ var saveScore = document.createElement("button");
 var enterScore = document.createElement("input");
 var yourName = document.createElement("p");
 var scoreBoard = document.getElementById("scoreboard");
-var right = document.getElementById("swish")
-var wrong = document.getElementById("miss")
-var bricks = 0
-var buckets = 0
+var right = document.getElementById("swish");
+var wrong = document.getElementById("miss");
+var bricks = 0;
+var buckets = 0;
 var timer;
 var questionIndex = 0;
 var timerCount;
 var questionKey = [
   {
-    question: "1Whats 2 + 3",
-    answer: "5",
-    options: ["4", "5", "6", "7"],
+    question:
+      "_______ is the process of finding errors and fixing them within a program.",
+    answer: "Debugging",
+    options: ["Scripting", "Scanning", "Debugging", "Decoding"],
   },
 
   {
-    question: "2Whats 2 + 3",
-    answer: "5",
-    options: ["5", "5", "6", "7"],
+    question: "A loop that never ends is referred to as a(n)_________.",
+    answer: "Infinite loop",
+    options: ["For Loop", "Forever Loop", "While Loop", "Infinite loop"],
   },
 
   {
-    question: "3Whats 2 + 3",
-    answer: "5",
-    options: ["6", "5", "6", "7"],
+    question:
+      "Which of the following is the ultimate element selection method?",
+    answer: "querySelectorAll()",
+    options: ["querySelectorAll()", "queryAll()", "elementAll()", "query()"],
   },
   {
-    question: "4Whats 2 + 3",
-    answer: "5",
-    options: ["6", "5", "6", "7"],
+    question: "The node directly above a node is called __________",
+    answer: "parent",
+    options: ["upper node", "parent", "node mom", "ancestors"],
   },
   {
-    question: "5Whats 2 + 3",
-    answer: "5",
-    options: ["8", "5", "6", "7"],
+    question: "The C in CSS stands for _______________",
+    answer: "Cascading",
+    options: ["Contentional", "Continuous", "Cascading", "Cries for Help"],
   },
 ];
 console.log(rules);
@@ -55,7 +57,7 @@ function startTimer() {
     }
 
     // if timer hits 0 = end & enter initials
-    if (timerCount === 0) {
+    if (timerCount < 0) {
       clearInterval(timer);
       scores();
     }
@@ -64,16 +66,16 @@ function startTimer() {
 // START THE GAME
 startGame.addEventListener("click", start);
 function start() {
-  saveScore.style.visibility = "hidden"
+  saveScore.style.visibility = "hidden";
   startGame.style.visibility = "hidden";
   highScoreList.style.visibility = "hidden";
-  enterScore.style.visibility = "hidden"
-  yourName.style.visibility = "hidden"
-  bricks = 0
-  buckets = 0
-  questionIndex = 0
-  hideRules()
-  
+  enterScore.style.visibility = "hidden";
+  yourName.style.visibility = "hidden";
+  bricks = 0;
+  buckets = 0;
+  questionIndex = 0;
+  hideRules();
+
   console.log("start it then");
   timerCount = 60;
   startTimer();
@@ -109,16 +111,15 @@ function questions() {
 
     answerArea.appendChild(buttons);
   }
-
 }
 
 function answers(answer, selection) {
   if (answer === selection) {
     console.log("correct");
-    buckets++
+    buckets++;
   } else {
     console.log("wrong");
-    bricks++
+    bricks++;
     // time penalty for incorrect answers
     timerCount -= 20;
   }
@@ -127,20 +128,18 @@ function answers(answer, selection) {
   questionIndex++;
   if (questionIndex === 5) {
     timer == 0;
-    scores()
+    scores();
     return;
   }
-  hideQNA()
+  hideQNA();
 
   questions();
 }
-// function endGame() {
-//   console.log('thats all folks')
-// }
+
 function scores() {
   console.log("thats all folks");
   // hide q&a
-  hideQNA()
+  hideQNA();
   yourName.textContent = "enter your name and secure your legacy";
   saveScore.setAttribute("type", "submit");
   saveScore.textContent = "save";
@@ -148,28 +147,27 @@ function scores() {
   scoreBoard.append(yourName);
   scoreBoard.append(saveScore);
   scoreBoard.append(enterScore);
-  yourName.style.visibility = "visible"
-  saveScore.style.visibility = "visible"
+  yourName.style.visibility = "visible";
+  saveScore.style.visibility = "visible";
   startGame.style.visibility = "visible";
-  enterScore.style.visibility = "visible"
-  
-  clearInterval(timer)
-  timerElement.textContent = "GAME OVER"
+  enterScore.style.visibility = "visible";
+
+  clearInterval(timer);
+  timerElement.textContent = "GAME OVER";
 }
 saveScore.addEventListener("click", function () {
-  highScore()
-})
+  highScore();
+});
 
-function hideQNA(){
-  questionArea.textContent = ""
-  answerArea.textContent = ""
-  // timerElement.textContent = "" 
+function hideQNA() {
+  questionArea.textContent = "";
+  answerArea.textContent = "";
 }
-function hideRules(){
+function hideRules() {
   rules.textContent = "";
   header.textContent = "";
 }
-function highScore(){
+function highScore() {
   var scores = JSON.parse(localStorage.getItem("Scores")) || [];
   var loggedScore = {
     name: enterScore.value,
@@ -177,34 +175,27 @@ function highScore(){
   };
   scores.push(loggedScore);
   localStorage.setItem("scores", JSON.stringify(loggedScore));
-  console.log(scores)
+  console.log(scores);
 }
-var scoreLog = document.querySelector("#score-log")
+var scoreLog = document.querySelector("#score-log");
 
 scoreLog.addEventListener("click", function (event) {
   event.preventDefault();
-    highScoreList.style.visibility = "visible"
-    finalScore()
-})
+  highScoreList.style.visibility = "visible";
+  finalScore();
+});
 
 var nameList = [5];
 var highScoreList = document.querySelector("#scores");
 function finalScore() {
-    var scores = JSON.parse(localStorage.getItem("scores"));
-    var highScoreList = document.querySelector("#scores");
-    var boxScore = scores.name + " , " + scores.score;
-    for (var i = 0; i < nameList.length; i++) {
-        var li = document.createElement("li");
-        li.textContent = boxScore;
-        li.setAttribute("data-index", i);
-        highScoreList.appendChild(li);
-    }
-
-};
-// function restartClock(){
-  
-//   timerElement.textContent = "GAME OVER"
-//   }
-
-
-
+  var scores = JSON.parse(localStorage.getItem("scores"));
+  var highScoreList = document.querySelector("#scores");
+  var boxScore = scores.name + " , " + scores.score;
+  for (var i = 0; i < nameList.length; i++) {
+    var li = document.createElement("li");
+    li.textContent = boxScore;
+    li.style.color = "orange";
+    li.setAttribute("data-index", i);
+    highScoreList.appendChild(li);
+  }
+}
