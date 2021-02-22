@@ -1,6 +1,6 @@
 # Code Quiz Shootout Game
 
-> PUse your coding expertise to outshoot the competition! Do your best, and remember missed shots <strong>will</strong> cost you<em>TIME!</em>
+> Use your coding expertise to outshoot the competition! Do your best, and remember missed shots <strong>will</strong> cost you<em>TIME!</em>
 
 ## Table of contents
 
